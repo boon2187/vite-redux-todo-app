@@ -5,6 +5,11 @@ import { addTodo } from "../features/todos/TodosSlice";
 const Form = () => {
   const [inputValue, setInputValue] = useState("");
   const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(addTodo(inputValue));
+    setInputValue("");
+  };
+
   return (
     <div>
       <input
@@ -13,7 +18,7 @@ const Form = () => {
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <button onClick={() => dispatch(addTodo(inputValue))}>追加</button>
+      <button onClick={handleClick}>追加</button>
     </div>
   );
 };

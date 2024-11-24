@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Form from "./conponents/Form";
-import { deleteTodo } from "./features/todos/TodosSlice";
+import { deleteTodo, toggleIsCompleted } from "./features/todos/TodosSlice";
 
 function App() {
   const { todos } = useSelector((state) => state.todos);
@@ -12,7 +12,9 @@ function App() {
       <Form />
       {todos.map((todo) => (
         <div key={todo.id}>
-          <p>{todo.text}</p>
+          <p onClick={() => dispatch(toggleIsCompleted(todo.id))}>
+            {todo.text}
+          </p>
           <button onClick={() => dispatch(deleteTodo(todo.id))}>削除</button>
         </div>
       ))}

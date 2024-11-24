@@ -17,7 +17,8 @@ const todosSlice = createSlice({
         text: action.payload,
         isCompleted: false,
       };
-      state.todos.push(newTodo);
+      const newTodos = [...state.todos, newTodo];
+      state.todos = newTodos;
     },
   },
 });

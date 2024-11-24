@@ -3,7 +3,7 @@ import initTodos from "../../initialTodos";
 
 const todosSlice = createSlice({
   name: "todos",
-  initialState: initTodos,
+  initialState: { todos: initTodos },
   reducers: {},
 });
 

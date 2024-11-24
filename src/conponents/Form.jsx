@@ -1,8 +1,19 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../features/todos/TodosSlice";
+
 const Form = () => {
+  const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
   return (
     <div>
-      <input type="text" placeholder="本を読む" />
-      <button>追加</button>
+      <input
+        type="text"
+        placeholder="本を読む"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={() => dispatch(addTodo(inputValue))}>追加</button>
     </div>
   );
 };

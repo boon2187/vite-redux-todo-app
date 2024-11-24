@@ -20,8 +20,14 @@ const todosSlice = createSlice({
       const newTodos = [...state.todos, newTodo];
       state.todos = newTodos;
     },
+
+    // delete a todo
+    deleteTodo: (state, action) => {
+      const newTodos = state.todos.filter((todo) => todo.id !== action.payload);
+      state.todos = newTodos;
+    },
   },
 });
 
-export const { addTodo } = todosSlice.actions;
+export const { addTodo, deleteTodo } = todosSlice.actions;
 export default todosSlice.reducer;

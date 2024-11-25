@@ -17,8 +17,7 @@ const todosSlice = createSlice({
         text: action.payload,
         isCompleted: false,
       };
-      const newTodos = [...state.todos, newTodo];
-      state.todos = newTodos;
+      state.todos.push(newTodo);
     },
 
     // delete a todo
@@ -29,12 +28,10 @@ const todosSlice = createSlice({
 
     // toggle isCompleted
     toggleIsCompleted: (state, action) => {
-      const newTodos = state.todos.map((todo) =>
-        todo.id === action.payload
-          ? { ...todo, isCompleted: !todo.isCompleted }
-          : todo
-      );
-      state.todos = newTodos;
+      const todo = state.todos.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.isCompleted = !todo.isCompleted;
+      }
     },
   },
 });
